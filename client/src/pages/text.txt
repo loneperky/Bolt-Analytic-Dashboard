@@ -1,0 +1,24 @@
+
+// collecting bolt data like earnings, trips, averageRating, activeHoursToday
+
+// what should be done inside the dashboard component
+const { dashboardData, isLoading } = useAuth();
+
+if (isLoading || !dashboardData) {
+  return <p className="text-center mt-10 text-lg">Loading...</p>;
+}
+
+const { earnings, trips, averageRating, activeHoursToday } = dashboardData;
+// Stat to be shown i
+
+<StatsCard
+  title="Today's Earnings"
+  value={`$${earnings.daily}`}
+  change="+12.5% from yesterday"
+  changeType="positive"
+  icon={DollarSign}
+  iconColor="text-green-500"
+/>
+
+
+
