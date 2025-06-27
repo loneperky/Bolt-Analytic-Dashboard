@@ -34,9 +34,10 @@ https://your-demo-video-link.com
 
 1. Clone the repo
 2. `cd backend && npm install`
-3. Set up `.env` file
-4. `npm run dev`
-5. Visit the frontend at `localhost:3000`
+3. `cd server && npm install`
+4. Set up `.env` file
+5. `npm run dev on both directory`
+6. Visit the frontend at `localhost:5173`
 
 ## 🧑‍💻 Author
 
