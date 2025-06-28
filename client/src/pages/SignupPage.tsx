@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Car, Eye, EyeOff, Loader2 } from 'lucide-react';
 import { toast } from 'react-toastify';
@@ -9,7 +9,7 @@ import axios from 'axios';
 
 const SignupPage: React.FC = () => {
   axios.defaults.withCredentials = true; // Ensure cookies are sent with requests
-  const { signup } = useAuth();
+  const { signup, } = useAuth();
   const { isDarkMode } = useTheme();
   const navigate = useNavigate();
 

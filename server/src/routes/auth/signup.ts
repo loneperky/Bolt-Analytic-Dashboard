@@ -101,7 +101,7 @@ router.post('/signup', async (req: Request, res: Response) => {
 
     res.cookie('token', token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
+      secure: false,
       sameSite: 'lax',
       maxAge: 24 * 60 * 60 * 1000, // 1 day
     });

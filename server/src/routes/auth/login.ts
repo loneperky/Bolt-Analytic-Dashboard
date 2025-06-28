@@ -23,6 +23,7 @@ router.post('/login', async (req: Request, res: Response) => {
   try {
     // Step 1: Login with Supabase Auth
     const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    console.log(data)
 
     if (error || !data.session || !data.user) {
       res.status(401).json({ error: error?.message || 'Invalid credentials' });
@@ -53,7 +54,7 @@ router.post('/login', async (req: Request, res: Response) => {
     // Step 4: Set token in cookie
     res.cookie('token', token, {
       httpOnly: true,
-      secure: false, // set true in production
+      secure: true, // set true in production
       sameSite: 'lax',
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });

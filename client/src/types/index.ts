@@ -103,9 +103,6 @@ export interface User {
 }
 
 
-
-
-
 /**
  * Context Type for Authentication Provider
  */

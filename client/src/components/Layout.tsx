@@ -18,7 +18,7 @@ const Layout: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [userDetails, setUserDetails] = useState<userDetails>()
-
+  const BACKEND_URL = "https://bolt-analytic-dashboard.onrender.com"
   const navigation = [
     { name: 'Dashboard', href: '/dashboard', icon: BarChart3 },
     { name: 'Expenses', href: '/expenses', icon: Receipt },
@@ -32,7 +32,7 @@ const Layout: React.FC = () => {
 
   useEffect(() => {
     const userDetails = async () => {
-      const details = await axios.get("http://localhost:5000/api/profile", { withCredentials: true })
+      const details = await axios.get(`${BACKEND_URL}/api/profile`, { withCredentials: true })
       if (details) {
         setUserDetails(details.data.user)
         console.log(details.data)

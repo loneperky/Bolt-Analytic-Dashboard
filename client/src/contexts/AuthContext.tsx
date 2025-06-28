@@ -2,7 +2,7 @@
 import React, { createContext, useContext, useState } from 'react';
 import axios from 'axios';
 import { AuthContextType, User, Expense, DashboardData } from '../types';
-import { Flag } from 'lucide-react';
+
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
@@ -21,11 +21,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadingDashboard, setIsLoadingDash] = useState(false)
   const [isLoadingExpense, setIsLoadingExpense] = useState(false)
-
+  const BACKEND_URL = "https://bolt-analytic-dashboard.onrender.com"
   const getProfile = async () => {
     setIsLoading(true)
     try {
-      const res = await axios.get('http://localhost:5000/api/profile', { withCredentials: true });
+      const res = await axios.get(`${BACKEND_URL}/api/profile`, { withCredentials: true });
       const u = res.data?.user;
 
       if (!u) {
@@ -58,7 +58,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     setIsLoadingDash(true)
     try {
-      const res = await axios.get("http://localhost:5000/api/dashboard", { withCredentials: true });
+      const res = await axios.get(`${BACKEND_URL}/api/dashboard`, { withCredentials: true });
       const data = res.data?.dashboard;
 
       if (!data) {
@@ -79,7 +79,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const getExpenses = async () => {
     setIsLoadingExpense(true)
     try {
-      const response = await axios.get("http://localhost:5000/api/expenses", {
+      const response = await axios.get(`${BACKEND_URL}/api/expenses`, {
         withCredentials: true
       });
       const expenses = response?.data?.expenses;
@@ -87,7 +87,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setExpenseData([]);
         return;
       } else {
-        setExpenseData(expenses.data.expenses);
+        setExpenseData(expenses);
         return
       }
     } catch (error: any) {
@@ -107,7 +107,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   ) => {
     setIsLoading(true);
     try {
-      await axios.post("http://localhost:5000/api/add", {
+      await axios.post(`${BACKEND_URL}/api/add`, {
         date,
         category,
         amount,
@@ -128,7 +128,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const login = async (email: string, password: string) => {
     setIsLoading(true);
     try {
-      await axios.post('http://localhost:5000/auth/login', { email, password }, { withCredentials: true });
+      await axios.post(`${BACKEND_URL}/auth/login`, { email, password }, { withCredentials: true });
       await getProfile();
     } catch (error) {
       console.error(error);
@@ -150,7 +150,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   ) => {
     setIsLoading(true);
     try {
-      await axios.post('http://localhost:5000/auth/signup', {
+      await axios.post(`${BACKEND_URL}/auth/signup`, {
         fullname,
         email,
         password,
@@ -171,7 +171,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const logout = async () => {
     try {
-      await axios.post('http://localhost:5000/auth/logout');
+      await axios.post(`${BACKEND_URL}/auth/logout`);
       setUser(null);
     } catch (error) {
       console.error(error);

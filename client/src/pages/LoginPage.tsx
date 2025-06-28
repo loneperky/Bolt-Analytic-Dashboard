@@ -32,7 +32,7 @@ const LoginPage: React.FC = () => {
     try {
       setIsLoading(true);
       await login(email, password);
-      fetchExpenses()
+      await fetchExpenses()
       toast.success('Login successful!');
       navigate('/dashboard');
 

@@ -8,13 +8,13 @@ axios.defaults.withCredentials = true;
 export const ExpensesProvider = ({ children }: { children: React.ReactNode }) => {
   const [expenses, setExpenses] = useState<Expense[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-
+  const BACKEND_URL = "https://bolt-analytic-dashboard.onrender.com"
   const fetchExpenses = async () => {
     setIsLoading(true);
     try {
-      const res = await axios.get('http://localhost:5000/api/expenses', { withCredentials: true });
+      const res = await axios.get(`${BACKEND_URL}/api/expenses`, { withCredentials: true });
       setExpenses(res.data.expenses);
-      console.log('Fetching expenses for user...', expenses);
+      console.log('Fetching expenses for user...', res.data.expenses);
 
     } catch (error) {
       console.error('Failed to fetch expenses:', error);
@@ -38,7 +38,7 @@ export const ExpensesProvider = ({ children }: { children: React.ReactNode }) =>
   ) => {
     setIsLoading(true);
     try {
-      await axios.post("http://localhost:5000/api/add", {
+      await axios.post(`${BACKEND_URL}/api/add`, {
         date,
         category,
         amount,

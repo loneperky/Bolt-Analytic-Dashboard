@@ -8,16 +8,19 @@ import { profileRouter } from './routes/userDetails/profile';
 import { getExpenses } from './routes/userDetails/getExpenses';
 import { AddExpenses } from './routes/userDetails/addExpenses';
 
+
 const app = express();
 const PORT = 5000;
 
+
+app.use(cookieParser());
 app.use(cors({
-    origin: ['http://localhost:5173', "http://localhost:5174"], // Adjust this to your client URL
+    origin: ['http://localhost:5173', "http://localhost:5174", "https://bolt-analytic-dashboard.vercel.app"], // Adjust this to your client URL
     credentials: true, // Allow cookies to be sent with requests
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
+
 
 // Auth Routes
 app.use("/auth", signup)
