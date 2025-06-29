@@ -70,6 +70,7 @@ export interface Expense {
 export interface ExpensesContextType {
   expenses: Expense[];
   isLoading: boolean;
+  isLoadingExpense: boolean;
   fetchExpenses: () => void;
   addExpenses: (
     date: string,
@@ -110,7 +111,6 @@ export interface AuthContextType {
   user: User | null;
   expenseData: any[] | null; // or define a proper Expense type
   isLoading: boolean;
-  isLoadingExpense: boolean,
   isLoadingDashboard: boolean,
   login: (email: string, password: string) => Promise<void>;
   signup: (
@@ -124,16 +124,8 @@ export interface AuthContextType {
     licensePlate: string
   ) => Promise<void>;
   logout: () => Promise<void>;
-  getExpenses: () => Promise<void>;
-  getDashboardData: () => Promise<void>;
   dashboardData?: DashboardData | null;
-  addExpenses: (
-    date: string,
-    category: Expense['category'], // ✅ use the correct enum type
-    amount: number,
-    description: string,
-    receipt?: string
-  ) => Promise<void>;
+
 }
 
 

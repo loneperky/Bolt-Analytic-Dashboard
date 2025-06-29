@@ -7,10 +7,12 @@ import { logout } from './routes/auth/logout';
 import { profileRouter } from './routes/userDetails/profile';
 import { getExpenses } from './routes/userDetails/getExpenses';
 import { AddExpenses } from './routes/userDetails/addExpenses';
+import dotenv from 'dotenv'
 
+dotenv.config()
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 
 app.use(cookieParser());

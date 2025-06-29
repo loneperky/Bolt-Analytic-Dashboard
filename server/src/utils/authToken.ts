@@ -24,8 +24,9 @@ const authToken = (req: Request, res: Response, next: NextFunction) => {
 
     if (!token) {
       res.status(401).json({ error: 'No token provided. Please log in.' });
-      return 
+      return
     }
+    console.log('authToken middleware triggered...');
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as {
       userId: string;
@@ -42,8 +43,8 @@ const authToken = (req: Request, res: Response, next: NextFunction) => {
     next();
   } catch (err: any) {
     console.error('[Middleware Error]', err.message || err);
-     res.status(401).json({ error: 'Invalid or expired token' });
-     return
+    res.status(401).json({ error: 'Invalid or expired token' });
+    return
   }
 };
 

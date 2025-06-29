@@ -8,10 +8,11 @@ axios.defaults.withCredentials = true;
 export const ExpensesProvider = ({ children }: { children: React.ReactNode }) => {
   const [expenses, setExpenses] = useState<Expense[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+   const [isLoadingExpense, setIsLoadingExpense] = useState(false)
   const LOCAL = "http://localhost:5000"
   const BACKEND_URL = "https://bolt-analytic-dashboard.onrender.com"
   const fetchExpenses = async () => {
-    setIsLoading(true);
+    setIsLoadingExpense(true);
     try {
       const res = await axios.get(`${LOCAL}/api/expenses`, { withCredentials: true });
       setExpenses(res.data.expenses);
@@ -20,7 +21,7 @@ export const ExpensesProvider = ({ children }: { children: React.ReactNode }) =>
     } catch (error) {
       console.error('Failed to fetch expenses:', error);
     } finally {
-      setIsLoading(false);
+      setIsLoadingExpense(false);
     }
   };
 
@@ -37,7 +38,7 @@ export const ExpensesProvider = ({ children }: { children: React.ReactNode }) =>
     description: string,
     receipt?: string
   ) => {
-    setIsLoading(true);
+    setIsLoadingExpense(true)
     try {
       await axios.post(`${LOCAL}/api/add`, {
         date,
@@ -51,12 +52,12 @@ export const ExpensesProvider = ({ children }: { children: React.ReactNode }) =>
       console.error("Add expense failed:", error);
       throw new Error("Failed to add expenses");
     } finally {
-      setIsLoading(false);
+      setIsLoadingExpense(false);
     }
   };
 
   return (
-    <ExpensesContext.Provider value={{ expenses, isLoading, fetchExpenses, addExpenses }}>
+    <ExpensesContext.Provider value={{ expenses, isLoading, fetchExpenses, addExpenses,isLoadingExpense }}>
       {children}
     </ExpensesContext.Provider>
   );

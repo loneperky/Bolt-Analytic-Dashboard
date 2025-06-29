@@ -13,7 +13,7 @@ const LoginPage: React.FC = () => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
-  const [isLoaading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const { isDarkMode } = useTheme();
   const { login } = useAuth();
   const { fetchExpenses } = useExpenses()
@@ -63,7 +63,7 @@ const LoginPage: React.FC = () => {
 
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           {error && (
-            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+            <div className=" bg-transparent border border-red-600 text-red-700 px-4 py-3 rounded-lg">
               {error}
             </div>
           )}
@@ -142,10 +142,10 @@ const LoginPage: React.FC = () => {
           <div>
             <button
               type="submit"
-              disabled={isLoaading}
+              disabled={isLoading}
               className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
-              {isLoaading ? (
+              {isLoading ? (
                 <Loader2 className="w-5 h-5 animate-spin" />
               ) : (
                 'Sign In'

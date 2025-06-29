@@ -20,7 +20,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [dashboardData, setDashboardData] = useState<DashboardData | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadingDashboard, setIsLoadingDash] = useState(false)
-  const [isLoadingExpense, setIsLoadingExpense] = useState(false)
+
   const LOCAL = "http://localhost:5000"
   const BACKEND_URL = "https://bolt-analytic-dashboard.onrender.com"
   const getProfile = async () => {
@@ -55,81 +55,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
-  const getDashboardData = async () => {
+ 
 
-    setIsLoadingDash(true)
-    try {
-      const res = await axios.get(`${LOCAL}/api/dashboard`, { withCredentials: true });
-      const data = res.data?.dashboard;
-
-      if (!data) {
-        setDashboardData(null);
-        return;
-      }
-
-      setDashboardData(data);
-    } catch (err) {
-      console.error("Failed to fetch dashboard:", err);
-      setDashboardData(null);
-    } finally {
-      setIsLoadingDash(false)
-    }
-  };
-
-
-  const getExpenses = async () => {
-    setIsLoadingExpense(true)
-    try {
-      const response = await axios.get(`${LOCAL}/api/expenses`, {
-        withCredentials: true
-      });
-      const expenses = response?.data?.expenses;
-      if (!expenses || expenses.length === 0) {
-        setExpenseData([]);
-        return;
-      } else {
-        setExpenseData(expenses);
-        return
-      }
-    } catch (error: any) {
-      console.error("Error fetching expenses:", error);
-      setExpenseData([]);
-    } finally {
-      setIsLoadingExpense(false)
-    }
-  };
-
-  const addExpenses = async (
-    date: string,
-    category: Expense['category'], // ✅ use the correct enum type
-    amount: number,
-    description: string,
-    receipt?: string
-  ) => {
-    setIsLoading(true);
-    try {
-      await axios.post(`${LOCAL}/api/add`, {
-        date,
-        category,
-        amount,
-        description,
-        receipt: receipt || null,
-      }, {
-        withCredentials: true
-      });
-      await getExpenses();
-    } catch (error) {
-      console.error("Add expense failed:", error);
-      throw new Error("Failed to add expenses");
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   const login = async (email: string, password: string) => {
     setIsLoading(true);
     try {
-      await axios.post(`${LOCAL}/auth/login`, { email, password }, { withCredentials: true });
+      await axios.post(`${LOCAL}/auth/login`, { email, password },
+        { withCredentials: true });
+
+      await new Promise(resolve => setTimeout(resolve, 200));
       await getProfile();
     } catch (error) {
       console.error(error);
@@ -184,16 +119,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     <AuthContext.Provider
       value={{
         user,
-        addExpenses,
-        getExpenses,
         login,
         signup,
         logout,
         expenseData,
         isLoading,
         isLoadingDashboard,
-        isLoadingExpense,
-        getDashboardData,
         dashboardData
       }}
     >
