@@ -54,10 +54,11 @@ router.post('/login', async (req: Request, res: Response) => {
     // Step 4: Set token in cookie
     res.cookie('token', token, {
       httpOnly: true,
-      secure: true, // set true in production
-      sameSite: 'lax',
+      secure: true, // must be true in production
+      sameSite: 'none', // ✅ allow cross-origin
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
+
 
     // Step 5: Return full user profile to frontend
     res.status(200).json({
