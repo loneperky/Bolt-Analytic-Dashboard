@@ -1,5 +1,7 @@
 [![Built with Bolt AI](https://boltai.nyc3.cdn.digitaloceanspaces.com/badge-light.svg)](https://www.boltai.tech/)
 
+[![Built with Bolt AI](https://raw.githubusercontent.com/XristenDev/assets/main/bolt-badge.svg)](https://www.boltai.tech/)
+
 # Bolt Driver Expense Tracker
 
 ## 🚀 Project Overview
@@ -32,7 +34,7 @@ https://bolt-analytic.netlify.app
 
 ## 📽️ Demo Video
 
-https://your-demo-video-link.com
+https://youtu.be/smkOBdLWLyM?si=CI3X96qnsiUstJmF
 
 ## ⚙️ Setup Locally
 
@@ -44,4 +46,5 @@ https://your-demo-video-link.com
 6. Visit the frontend at `localhost:5173`
 
 ## 🧑‍💻 Author
+https://github.com/loneperky
 

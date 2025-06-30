@@ -211,19 +211,26 @@ const HomePage: React.FC = () => {
           <p className={`${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
             © 2025 Bolt Dashboard. Empowering drivers with data-driven insights.
           </p>
-         
+
           <p className={`${isDarkMode ? 'text-gray-400' : 'text-gray-600'} pt-2 text-center flex gap-4 justify-center`}>
-             <a href="https://github.com/loneperky" 
-              target="_blank"className="text-gray-400 hover:text-primary-500 transition-colors" aria-label="Github">
-                <Github size={30} />
-              </a>
+            <a href="https://github.com/loneperky"
+              target="_blank" className="text-gray-400 hover:text-primary-500 transition-colors" aria-label="Github">
+              <Github size={30} />
+            </a>
             <a href="https://www.linkedin.com/in/christian-otasowie-074820355?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target='_blank' className="text-gray-400 hover:text-primary-500 transition-colors" aria-label="LinkedIn">
               <Linkedin size={30} />
             </a>
           </p>
-           <p className={`${isDarkMode ? 'text-gray-400' : 'text-gray-600'} pt-2 text-right`}>Built with Bolt AI
+          <p className={`${isDarkMode ? 'text-gray-400' : 'text-gray-600'} pt-2 text-right`}>Built with Bolt AI
           </p>
-        </div> 
+          <a href="https://www.boltai.tech/" target="_blank" rel="noopener noreferrer">
+            <img
+              src="https://boltai.nyc3.cdn.digitaloceanspaces.com/badge-light.svg"
+              alt="Built with Bolt AI"
+              style={{ width: '150px', height: 'auto' }}
+            />
+          </a>
+        </div>
       </footer>
     </div>
   );
