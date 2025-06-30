@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cookieParser());
 app.use(cors({
-    origin: ['http://localhost:5173', "http://localhost:5174", "https://bolt-analytic-dashboard.vercel.app"], // Adjust this to your client URL
+    origin: ['http://localhost:5173', "http://localhost:5174", "https://bolt-analytic-dashboard.vercel.app","https://bolt-analytic.netlify.app"], // Adjust this to your client URL
     credentials: true, // Allow cookies to be sent with requests
 }));
 app.use(express.json());

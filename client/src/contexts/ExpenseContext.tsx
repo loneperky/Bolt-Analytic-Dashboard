@@ -14,7 +14,7 @@ export const ExpensesProvider = ({ children }: { children: React.ReactNode }) =>
   const fetchExpenses = async () => {
     setIsLoadingExpense(true);
     try {
-      const res = await axios.get(`${LOCAL}/api/expenses`, { withCredentials: true });
+      const res = await axios.get(`${BACKEND_URL}/api/expenses`, { withCredentials: true });
       setExpenses(res.data.expenses);
       console.log('Fetching expenses for user...', res.data.expenses);
 
@@ -40,7 +40,7 @@ export const ExpensesProvider = ({ children }: { children: React.ReactNode }) =>
   ) => {
     setIsLoadingExpense(true)
     try {
-      await axios.post(`${LOCAL}/api/add`, {
+      await axios.post(`${BACKEND_URL}/api/add`, {
         date,
         category,
         amount,

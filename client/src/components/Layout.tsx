@@ -33,7 +33,7 @@ const Layout: React.FC = () => {
 
   useEffect(() => {
     const userDetails = async () => {
-      const details = await axios.get(`${LOCAL}/api/profile`, { withCredentials: true })
+      const details = await axios.get(`${BACKEND_URL}/api/profile`, { withCredentials: true })
       if (details) {
         setUserDetails(details.data.user)
         console.log(details.data)

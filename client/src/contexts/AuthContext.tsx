@@ -26,7 +26,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const getProfile = async () => {
     setIsLoading(true)
     try {
-      const res = await axios.get(`${LOCAL}/api/profile`, { withCredentials: true });
+      const res = await axios.get(`${BACKEND_URL}/api/profile`, { withCredentials: true });
       const u = res.data?.user;
 
       if (!u) {
@@ -61,7 +61,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const login = async (email: string, password: string) => {
     setIsLoading(true);
     try {
-      await axios.post(`${LOCAL}/auth/login`, { email, password },
+      await axios.post(`${BACKEND_URL}/auth/login`, { email, password },
         { withCredentials: true });
 
       await new Promise(resolve => setTimeout(resolve, 200));
@@ -86,7 +86,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   ) => {
     setIsLoading(true);
     try {
-      await axios.post(`${LOCAL}/auth/signup`, {
+      await axios.post(`${BACKEND_URL}/auth/signup`, {
         fullname,
         email,
         password,
@@ -107,7 +107,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const logout = async () => {
     try {
-      await axios.post(`${LOCAL}/auth/logout`);
+      await axios.post(`${BACKEND_URL}/auth/logout`);
       setUser(null);
     } catch (error) {
       console.error(error);
