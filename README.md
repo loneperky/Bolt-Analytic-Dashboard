@@ -28,6 +28,8 @@ Many drivers work daily but have no visibility into where their money goes. This
 
 https://bolt-analytic-dashboard.vercel.app
 
+https://bolt-analytic.netlify.app
+
 ## 📽️ Demo Video
 
 https://your-demo-video-link.com

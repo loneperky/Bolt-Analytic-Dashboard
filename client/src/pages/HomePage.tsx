@@ -220,14 +220,10 @@ const HomePage: React.FC = () => {
             <a href="https://www.linkedin.com/in/christian-otasowie-074820355?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target='_blank' className="text-gray-400 hover:text-primary-500 transition-colors" aria-label="LinkedIn">
               <Linkedin size={30} />
             </a>
-
-
           </p>
            <p className={`${isDarkMode ? 'text-gray-400' : 'text-gray-600'} pt-2 text-right`}>Built with Bolt AI
           </p>
-        </div>
-
-        
+        </div> 
       </footer>
     </div>
   );
