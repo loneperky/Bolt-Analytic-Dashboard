@@ -37,7 +37,7 @@ https://your-demo-video-link.com
 ## ⚙️ Setup Locally
 
 1. Clone the repo
-2. `cd backend && npm install`
+2. `cd client && npm install`
 3. `cd server && npm install`
 4. Set up `.env` file
 5. `npm run dev on both directory`
