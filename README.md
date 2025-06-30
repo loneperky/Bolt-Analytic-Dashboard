@@ -1,3 +1,5 @@
+[![Built with Bolt AI](https://boltai.nyc3.cdn.digitaloceanspaces.com/badge-light.svg)](https://www.boltai.tech/)
+
 # Bolt Driver Expense Tracker
 
 ## 🚀 Project Overview
@@ -41,4 +43,3 @@ https://your-demo-video-link.com
 
 ## 🧑‍💻 Author
 
-Christian Otasowie (github.com/loneperky)

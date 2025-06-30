@@ -226,6 +226,8 @@ const HomePage: React.FC = () => {
            <p className={`${isDarkMode ? 'text-gray-400' : 'text-gray-600'} pt-2 text-right`}>Built with Bolt AI
           </p>
         </div>
+
+        
       </footer>
     </div>
   );
